@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #fff;
+  color: #000;
+
+  /* Flexbox для точного центрирования всего содержимого */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.App {
+  width: 100%; /* Занимаем всю ширину экрана */
+  max-width: 900px; /* Ограничиваем максимальную ширину */
+}
+
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  z-index: 10;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #000, #555);
+  transition: width 0.5s ease-in-out;
+}
+
+.question-number {
+  position: fixed;
+  top: 16px; /* Расположение под прогресс-баром */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+}
+
+.content-container {
+  /* Контейнер для центрирования карточки */
+  width: 100%; /* Занимает всю ширину */
+  max-width: 700px; /* Ограничиваем ширину */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Отступы слева и справа */
+}
+
+.question-card {
+  width: 100%; /* Карточка адаптируется под ширину контейнера */
+  border: 1px solid #000;
+  border-radius: 15px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px; /* Внутренние отступы */
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Расстояние между кнопками */
+}
+
+.option-button {
+  width: 100%; /* Кнопки растягиваются по ширине карточки */
+  max-width: 650px; /* Ограничиваем максимальную ширину */
+  margin: 0 auto; /* Центрируем кнопки */
+  padding: 15px;
+  font-size: 18px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.option-button:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.option-button.correct {
+  background: #28a745;
+  border-color: #218838;
+  color: #fff;
+}
+
+.option-button.wrong {
+  background: #dc3545;
+  border-color: #c82333;
+  color: #fff;
+}
+
+.option-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.results-card {
+  width: 100%;
+  max-width: 700px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  text-align: center;
+}
+
+.results-card h2 {
+  font-size: 28px;
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.results-card p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.restart-button {
+  width: 100%;
+  max-width: 650px;
+  padding: 15px 20px;
+  font-size: 18px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.restart-button:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
