@@ -176,7 +176,7 @@ h2 {
 .completion-card h2 {
   font-size: 20px;
   color: #000;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   line-height: 1.4;
 }
 
