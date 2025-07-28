@@ -98,6 +98,9 @@ function App() {
       <div className="App">
         {currentQuestionIndex >= questions.length ? (
           <div className="completion-card">
+            <span className="question-number">
+              Питання {questions.length}/{questions.length}
+            </span>
             <h2>Дякую за участь у вікторині!</h2>
           </div>
         ) : (
