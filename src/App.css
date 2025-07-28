@@ -167,7 +167,7 @@ h2 {
   border-radius: 15px;
   background: #f9f9f9;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 25px 12px;
+  padding: 25px 12px 25px 12px;
   text-align: center;
   box-sizing: border-box;
   margin: 0;
@@ -233,7 +233,7 @@ h2 {
 
   .completion-card {
     max-width: 98vw;
-    padding: 16px 4px;
+    padding: 16px 4px 16px 4px;
     margin: 0;
   }
 
