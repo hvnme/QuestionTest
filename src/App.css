@@ -45,7 +45,7 @@
 @media (max-width: 480px) {
   .quiz-title {
     font-size: 14px;
-    text-align: left;
+    text-align: center;
   }
   .quiz-header-inside {
     gap: 4px;
