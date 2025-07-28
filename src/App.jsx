@@ -113,42 +113,53 @@ function App() {
               transition={{ duration: 0.18, ease: "easeInOut" }}
               className="question-card"
             >
-            <h2>
-              {currentQuestionIndex + 1}. {currentQuestion.question}
-            </h2>
-            <div className="options-container">
-              {currentQuestion.options.map((option, index) => {
-                const letters = ['а', 'б', 'в', 'г', 'д', 'е', 'є', 'ж', 'з'];
-                const letter = letters[index] ? letters[index] : String.fromCharCode(1072 + index); // fallback
-                return (
-                  <motion.button
-                    key={index}
-                    onClick={() => handleAnswerClick(index)}
-                    whileHover={{ scale: 1.01 }}
-                    whileTap={{ scale: 0.98 }}
-                    className={`option-button ${
-                      selectedOption === index ? "selected" : ""
-                    }`}
-                  >
-                    <span style={{fontWeight:'bold', marginRight:8, textTransform:'lowercase'}}>{letter}.</span> {option}
-                  </motion.button>
-                );
-              })}
-            </div>
-            {selectedOption !== null && (
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.14 }}
-                onClick={handleNextQuestion}
-                className="next-button"
-              >
-                {currentQuestionIndex === questions.length - 1
-                  ? "Завершити вікторину"
-                  : "Наступне запитання"}
-              </motion.button>
-            )}
+              <h2>
+                {currentQuestionIndex + 1}. {currentQuestion.question}
+              </h2>
+              <div className="options-container">
+                {currentQuestion.options.map((option, index) => {
+                  const letters = ["а", "б", "в", "г", "д", "е", "є", "ж", "з"];
+                  const letter = letters[index]
+                    ? letters[index]
+                    : String.fromCharCode(1072 + index); // fallback
+                  return (
+                    <motion.button
+                      key={index}
+                      onClick={() => handleAnswerClick(index)}
+                      whileHover={{ scale: 1.01 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`option-button ${
+                        selectedOption === index ? "selected" : ""
+                      }`}
+                    >
+                      <span
+                        style={{
+                          fontWeight: "bold",
+                          marginRight: 8,
+                          textTransform: "lowercase",
+                        }}
+                      >
+                        {letter}.
+                      </span>{" "}
+                      {option}
+                    </motion.button>
+                  );
+                })}
+              </div>
+              {selectedOption !== null && (
+                <motion.button
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.14 }}
+                  onClick={handleNextQuestion}
+                  className="next-button"
+                >
+                  {currentQuestionIndex === questions.length - 1
+                    ? "Завершити вікторину"
+                    : "Наступне запитання"}
+                </motion.button>
+              )}
             </motion.div>
           </AnimatePresence>
         )}
