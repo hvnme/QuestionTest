@@ -129,16 +129,16 @@ function App() {
                         selectedOption === index ? "selected" : ""
                       }`}
                     >
-                    <span
-                      style={{
-                        marginRight: 8,
-                        textTransform: "lowercase",
-                        fontWeight: "normal"
-                      }}
-                    >
-                      {letter}.
-                    </span>
-                    {option}
+                      <span
+                        style={{
+                          marginRight: 8,
+                          textTransform: "lowercase",
+                          fontWeight: "normal",
+                        }}
+                      >
+                        {letter}.
+                      </span>
+                      {option}
                     </motion.button>
                   );
                 })}
