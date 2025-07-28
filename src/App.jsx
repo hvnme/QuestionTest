@@ -81,29 +81,35 @@ function App() {
 
   return (
     <div className="App">
+      <div className="quiz-header-outside">
+        <div className="quiz-title">
+          Офтальмологія. Використання лікарських засобів та дослідження. Ч.9
+        </div>
+        <div className="quiz-meta-row">
+          <div className="progress-bar-container">
+            <motion.div
+              className="progress-bar"
+              initial={{ width: 0 }}
+              animate={{
+                width: `${
+                  currentQuestionIndex >= questions.length ? 100 : progress
+                }%`,
+              }}
+              transition={{ duration: 0.5 }}
+            />
+          </div>
+          <span className="question-number">
+            Питання{" "}
+            {currentQuestionIndex >= questions.length
+              ? questions.length
+              : currentQuestionIndex + 1}
+            /{questions.length}
+          </span>
+          <span className="datetime">{formatDateTime(currentDateTime)}</span>
+        </div>
+      </div>
       {currentQuestionIndex >= questions.length ? (
         <div className="completion-card">
-          <div className="quiz-header-inside">
-            <div className="quiz-title">
-              Офтальмологія. Використання лікарських засобів та дослідження. Ч.9
-            </div>
-            <div className="quiz-meta-row">
-              <div className="progress-bar-container">
-                <motion.div
-                  className="progress-bar"
-                  initial={{ width: 0 }}
-                  animate={{ width: `100%` }}
-                  transition={{ duration: 0.5 }}
-                />
-              </div>
-              <span className="question-number">
-                Питання {questions.length}/{questions.length}
-              </span>
-              <span className="datetime">
-                {formatDateTime(currentDateTime)}
-              </span>
-            </div>
-          </div>
           <h2>Дякую за участь у вікторині!</h2>
         </div>
       ) : (
@@ -116,28 +122,6 @@ function App() {
             transition={{ duration: 0.18, ease: "easeInOut" }}
             className="question-card"
           >
-            <div className="quiz-header-inside">
-              <div className="quiz-title">
-                Офтальмологія. Використання лікарських засобів та дослідження.
-                Ч.9
-              </div>
-              <div className="quiz-meta-row">
-                <div className="progress-bar-container">
-                  <motion.div
-                    className="progress-bar"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </div>
-                <span className="question-number">
-                  Питання {currentQuestionIndex + 1}/{questions.length}
-                </span>
-                <span className="datetime">
-                  {formatDateTime(currentDateTime)}
-                </span>
-              </div>
-            </div>
             <h2>
               {currentQuestionIndex + 1}. {currentQuestion.question}
             </h2>
