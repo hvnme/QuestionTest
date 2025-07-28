@@ -98,7 +98,7 @@ function App() {
       <div className="App">
         {currentQuestionIndex >= questions.length ? (
           <div className="completion-card">
-            <h2>Дякую, тест завершено!</h2>
+            <h2>Дякую за участь у вікторині!</h2>
             <button onClick={handleRestart} className="restart-button">
               Почати знову
             </button>
