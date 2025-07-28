@@ -1,19 +1,22 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: "Arial", sans-serif;
   background-color: #fff;
   color: #000;
-
-  /* Flexbox для точного центрирования всего содержимого */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .App {
-  width: 100%; /* Занимаем всю ширину экрана */
-  max-width: 900px; /* Ограничиваем максимальную ширину */
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .progress-bar-container {
@@ -21,9 +24,26 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 8px;
+  height: 6px;
   background-color: #e0e0e0;
   z-index: 10;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 0 12px;
 }
 
 .progress-bar {
@@ -33,13 +53,23 @@ body {
 }
 
 .question-number {
-  position: fixed;
-  top: 16px; /* Расположение под прогресс-баром */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 16px;
+  position: static;
+  font-size: 14px;
   color: #333;
   font-weight: bold;
+  margin-left: 0;
+  margin-right: 12px;
+}
+
+.datetime {
+  position: static;
+  font-size: 12px;
+  color: #333;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-left: 12px;
 }
 
 .content-container {
@@ -53,92 +83,107 @@ body {
 }
 
 .question-card {
-  width: 100%; /* Карточка адаптируется под ширину контейнера */
+  width: 100%;
+  max-width: 420px;
   border: 1px solid #000;
   border-radius: 15px;
   background: #f9f9f9;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 30px; /* Внутренние отступы */
+  padding: 20px 12px;
   text-align: center;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 20px;
   color: #000;
+  line-height: 1.4;
 }
 
 .options-container {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Расстояние между кнопками */
+  gap: 12px;
 }
 
 .option-button {
-  width: 100%; /* Кнопки растягиваются по ширине карточки */
-  max-width: 650px; /* Ограничиваем максимальную ширину */
-  margin: 0 auto; /* Центрируем кнопки */
-  padding: 15px;
-  font-size: 18px;
+  width: 100%;
+  padding: 15px 12px;
+  font-size: 16px;
   border: 1px solid #000;
   background: #fff;
   color: #000;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-align: center;
+  line-height: 1.3;
+  box-sizing: border-box;
 }
 
 .option-button:hover {
   background: #f0f0f0;
-  transform: scale(1.05);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.option-button.correct {
-  background: #28a745;
-  border-color: #218838;
+.option-button.selected {
+  background: #007bff;
+  border-color: #0056b3;
   color: #fff;
+  transform: scale(1.02);
 }
 
-.option-button.wrong {
-  background: #dc3545;
-  border-color: #c82333;
-  color: #fff;
-}
-
-.option-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-.results-card {
+.next-button {
   width: 100%;
-  max-width: 700px;
+  max-width: 280px;
+  margin: 20px auto 0;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #007bff;
+  background: #007bff;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.next-button:hover {
+  background: #0056b3;
+  border-color: #0056b3;
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.completion-card {
+  width: 100%;
+  max-width: 420px;
   border: 1px solid #000;
   border-radius: 15px;
   background: #f9f9f9;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  padding: 40px;
+  padding: 25px 12px;
   text-align: center;
+  box-sizing: border-box;
+  margin: 0;
 }
 
-.results-card h2 {
-  font-size: 28px;
+.completion-card h2 {
+  font-size: 20px;
   color: #000;
   margin-bottom: 20px;
-}
-
-.results-card p {
-  font-size: 18px;
-  margin: 10px 0;
+  line-height: 1.4;
 }
 
 .restart-button {
   width: 100%;
-  max-width: 650px;
-  padding: 15px 20px;
-  font-size: 18px;
+  padding: 12px 16px;
+  font-size: 16px;
   border: 1px solid #000;
   background: #fff;
   color: #000;
@@ -146,10 +191,89 @@ h2 {
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 20px;
+  box-sizing: border-box;
 }
 
 .restart-button:hover {
   background: #f0f0f0;
-  transform: scale(1.05);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Додаткові мобільні оптимізації */
+@media (max-width: 480px) {
+  .App {
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .question-card {
+    max-width: 98vw;
+    padding: 12px 4px;
+    border-radius: 12px;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .option-button {
+    padding: 12px 10px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
+
+  .next-button {
+    padding: 10px 14px;
+    font-size: 15px;
+    margin-top: 15px;
+  }
+
+  .completion-card {
+    max-width: 98vw;
+    padding: 16px 4px;
+    margin: 0;
+  }
+
+  .completion-card h2 {
+    font-size: 18px;
+  }
+
+  .restart-button {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+
+  .question-number {
+    font-size: 13px;
+    margin-right: 8px;
+  }
+  .datetime {
+    font-size: 11px;
+    padding: 2px 6px;
+    margin-left: 8px;
+  }
+}
+
+/* Оптимізація для дуже маленьких екранів */
+@media (max-width: 320px) {
+  .question-card {
+    margin: 40px 5px 10px 5px;
+    padding: 12px;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  .option-button {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .next-button {
+    font-size: 14px;
+  }
 }
