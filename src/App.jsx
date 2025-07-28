@@ -90,17 +90,16 @@ function App() {
             transition={{ duration: 0.5 }}
           />
         </div>
-        <span className="question-number">
-          Питання {currentQuestionIndex + 1}/{questions.length}
-        </span>
+        {currentQuestionIndex < questions.length && (
+          <span className="question-number">
+            Питання {currentQuestionIndex + 1}/{questions.length}
+          </span>
+        )}
         <span className="datetime">{formatDateTime(currentDateTime)}</span>
       </div>
       <div className="App">
         {currentQuestionIndex >= questions.length ? (
           <div className="completion-card">
-            <span className="question-number">
-              Питання {questions.length}/{questions.length}
-            </span>
             <h2>Дякую за участь у вікторині!</h2>
           </div>
         ) : (
