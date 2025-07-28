@@ -99,9 +99,6 @@ function App() {
         {currentQuestionIndex >= questions.length ? (
           <div className="completion-card">
             <h2>Дякую за участь у вікторині!</h2>
-            <button onClick={handleRestart} className="restart-button">
-              Почати знову
-            </button>
           </div>
         ) : (
           <AnimatePresence mode="wait">
@@ -132,16 +129,16 @@ function App() {
                         selectedOption === index ? "selected" : ""
                       }`}
                     >
-                      <span
-                        style={{
-                          fontWeight: "bold",
-                          marginRight: 8,
-                          textTransform: "lowercase",
-                        }}
-                      >
-                        {letter}.
-                      </span>{" "}
-                      {option}
+                    <span
+                      style={{
+                        marginRight: 8,
+                        textTransform: "lowercase",
+                        fontWeight: "normal"
+                      }}
+                    >
+                      {letter}.
+                    </span>
+                    {option}
                     </motion.button>
                   );
                 })}
